@@ -18,7 +18,7 @@
 
             <li>
               
-              <a href="/?month={{ $month['month'] }}&year={{ $month['year'] }}">
+              <a href="/posts/?month={{ $month['month'] }}&year={{ $month['year'] }}">
 
 
               {{ $month['month'] .' '. $month['year'] }}

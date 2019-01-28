@@ -1,6 +1,6 @@
 <?php
 
-Route::get('/welcome', function () {
+Route::get('/', function () {
 
 	return view('welcome');
 
@@ -12,7 +12,7 @@ Route::get('/welcome', function () {
  Route::resource('posts', 'PostsController');
 
 
- Route::get('/', 'PostsController@index');
+ Route::get('/posts', 'PostsController@index');
 
 Route::get('/posts/create', 'PostsController@create');
 
