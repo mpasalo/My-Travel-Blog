@@ -1,17 +1,14 @@
 <?php
 
 
-Route::get('/', function () {
 
-
-
-	return view('welcome');
-
-});
 
 
 // // -----PostsController------ 
  Route::resource('posts', 'PostsController');
+
+
+ Route::get('/', 'PostsController@index');
 
 Route::get('/posts/create', 'PostsController@create');
 
@@ -27,4 +24,9 @@ Route::get('logout', '\App\Http\Controllers\Auth\LoginController@logout');
 
 Auth::routes();
 
-Route::get('/home', 'HomeController@index')->name('home');
+
+Route::get('/welcome', function () {
+
+	return view('welcome');
+
+});
