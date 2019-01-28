@@ -26,7 +26,7 @@
 
               </a>
 
-
+      
             </li>
 
           @endforeach

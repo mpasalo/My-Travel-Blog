@@ -17,7 +17,7 @@ class PostsController extends Controller
 
    {
 
-      $this->middleware('auth')->except(['index', 'show']);
+      $this->middleware('auth');
 
 
    }
@@ -27,9 +27,22 @@ class PostsController extends Controller
 
    {
 
-         $posts = Post::latest()
-         ->filter(request(['month', 'year']))
-         ->get();
+         $posts = Post::latest();
+
+         if ($month = request('month')) {
+
+            $posts->whereMonth('created_at', Carbon::parse($month)->month);
+
+         }
+
+
+         if ($year = request('year')) {
+
+            $posts->whereYear('created_at', $year);
+
+         }
+
+         $posts = $posts->get();
 
          $archives = Post::selectRaw('year(created_at) year, monthname(created_at) month, count(*) published')
          ->groupBy('year', 'month')
@@ -47,7 +60,13 @@ class PostsController extends Controller
 
    {
 
-   		return view('posts.show', compact('post'));
+          $archives = Post::selectRaw('year(created_at) year, monthname(created_at) month, count(*) published')
+         ->groupBy('year', 'month')
+         ->orderByRaw('min(created_at) desc')
+         ->get()
+         ->toArray();
+
+   		return view('posts.show', compact('post', 'archives'));
 
 
    }
