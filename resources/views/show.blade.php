@@ -27,7 +27,7 @@
 						<textarea name="body" placeholder="Your comment here." class="form-control">{{ old('body') }}</textarea>
 					</div>
 					<div class="form-group">
-						<button type="submit" class="btn btn-primary">Add Coasdasdmment</button>
+						<button type="submit" class="btn btn-primary">Add Comment</button>
 					</div>	
 				</form>
 				@include ('layouts.errors')
