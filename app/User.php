@@ -3,7 +3,6 @@
 namespace App;
 
 use Illuminate\Notifications\Notifiable;
-
 use Illuminate\Foundation\Auth\User as Authenticatable;
 
 class User extends Authenticatable
@@ -28,41 +27,28 @@ class User extends Authenticatable
         'password', 'remember_token',
     ];
 
-
     public function projects()
-
     {
-
         return $this->hasMany(Project::class, 'owner_id');
-
     }
-
-
 
     public function posts()
     {
-
-
         return $this->hasMany(Post::class);
-
     }
     
     public function publish(Post $post)
     {
-
-        $this->posts()->save($post);    
-
-
+        $this->posts()->save($post);
     }
+
     public function isVerified()
     {
-
         return (bool) $this->email_verified_at;
     }
     
     public function isNotVerified()
     {
-
         return ! $this->isVerified();
     }
 }
