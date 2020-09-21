@@ -6,13 +6,15 @@
     <div class="p-3">
         <h4 class="font-italic">Archives</h4>
         <ol class="list-unstyled mb-0">
-            @foreach ($archives as $month)
-                <li>
-                    <a href="/posts/?month={{ $month['month'] }}&year={{ $month['year'] }}">
-                        {{ $month['month'] .' '. $month['year'] }}
-                    </a>
-                </li>
-            @endforeach
+            @if (isset($archives))
+                @foreach ($archives as $month)
+                    <li>
+                        <a href="/posts/?month={{ $month['month'] }}&year={{ $month['year'] }}">
+                            {{ $month['month'] .' '. $month['year'] }}
+                        </a>
+                    </li>
+                @endforeach
+            @endif
         </ol>
     </div>
     <div class="p-3">
