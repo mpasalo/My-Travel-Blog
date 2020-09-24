@@ -13,6 +13,8 @@ class CommentsController extends Controller
 
         $post->addComment(request('body'));
 
-        return back();
+        return response()->json([
+            'message' => 'success',
+        ]);
     }
 }
