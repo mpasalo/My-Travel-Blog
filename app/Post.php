@@ -6,6 +6,24 @@ use Carbon\Carbon;
 
 class Post extends Model
 {
+    /**
+     * The protected attributes
+     *
+     * @var array
+     */
+    protected $guarded = ['id'];
+
+    /**
+     * @var array
+     */
+    protected $casts = [
+        'id'        => 'integer',
+        'user_id'   => 'integer',
+        'title'     => 'string',
+        'body'      => 'string',   
+    ];
+
+
     public function comments()
     {
         return $this->hasMany(Comment::class);
