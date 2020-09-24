@@ -22,5 +22,12 @@
         "sass-loader": "^7.1.0",
         "vue": "^2.5.17",
         "vue-template-compiler": "^2.6.12"
+    },
+    "dependencies": {
+        "object-to-formdata": "^4.1.0",
+        "vform": "^1.0.1",
+        "vue-loader": "^15.9.3",
+        "vue-sweetalert2": "^3.0.8",
+        "vuex": "^3.5.1"
     }
 }
