@@ -1,0 +1,32 @@
+body  {
+    font-family: 'Architects Daughter'; 
+}
+p {
+    font-family: 'Architects Daughter'; 
+}
+a {
+    text-decoration: none !important;
+    font-family: 'Nothing You Could Do' !important;
+}
+.background-image {
+    background-image: url('/iceland.jpg');
+    background-size: cover;
+    display: block;
+    filter: blur(6px);
+    -webkit-filter: blur(6px);
+    height: 100%;
+    left: 0;
+    position: fixed;
+    right: 0;
+    z-index: -1;
+
+}
+.content {
+    top: 10px;
+    left: 0;
+    margin-left: 20px;
+    margin-right: 20px;
+    right: 0;
+    z-index: 2;
+    margin-top: 120px;    
+}

@@ -21,8 +21,6 @@ body, html {
   text-decoration: none;
 }
 
-
-
 .display-4 {
   font-size: 2.5rem;
 }
@@ -131,8 +129,6 @@ body, html {
 
 
 /* Video */
-
-
 #myVideo {
   position: fixed;
   right: 0;
