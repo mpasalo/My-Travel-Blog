@@ -26,7 +26,7 @@ class PostsController extends Controller
             $posts->whereYear('created_at', $year);
         }
 
-        $posts = $posts->get();
+        $posts = $posts->with(['user'])->get();
 
         $archives = Post::selectRaw('year(created_at) year, monthname(created_at) month, count(*) published')
             ->groupBy('year', 'month')
@@ -39,6 +39,7 @@ class PostsController extends Controller
 
     public function show(Post $post)
     {
+        $post = $post->load('user', 'comments');
         $archives = Post::selectRaw('year(created_at) year, monthname(created_at) month, count(*) published')
             ->groupBy('year', 'month')
             ->orderByRaw('min(created_at) desc')
