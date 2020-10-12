@@ -1,15 +1,15 @@
-body  {
-    font-family: 'Architects Daughter'; 
+body {
+    font-family: "Architects Daughter";
 }
 p {
-    font-family: 'Architects Daughter'; 
+    font-family: "Architects Daughter";
 }
 a {
     text-decoration: none !important;
-    font-family: 'Nothing You Could Do' !important;
+    font-family: "Nothing You Could Do" !important;
 }
 .background-image {
-    background-image: url('/iceland.jpg');
+    background-image: url("/travel_background.jpg");
     background-size: cover;
     display: block;
     filter: blur(6px);
@@ -19,7 +19,6 @@ a {
     position: fixed;
     right: 0;
     z-index: -1;
-
 }
 .content {
     top: 10px;
@@ -28,5 +27,5 @@ a {
     margin-right: 20px;
     right: 0;
     z-index: 2;
-    margin-top: 120px;    
+    margin-top: 120px;
 }
