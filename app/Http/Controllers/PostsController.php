@@ -2,10 +2,10 @@
 
 namespace App\Http\Controllers;
 
-use Illuminate\Http\Request;
 use App\Post;
-use Carbon\Carbon;
 use App\User;
+use Carbon\Carbon;
+use Illuminate\Http\Request;
 
 class PostsController extends Controller
 {
@@ -18,23 +18,9 @@ class PostsController extends Controller
     {
         $posts = Post::latest();
 
-        if ($month = request('month')) {
-            $posts->whereMonth('created_at', Carbon::parse($month)->month);
-        }
-
-        if ($year = request('year')) {
-            $posts->whereYear('created_at', $year);
-        }
-
         $posts = $posts->with(['user'])->get();
 
-        $archives = Post::selectRaw('year(created_at) year, monthname(created_at) month, count(*) published')
-            ->groupBy('year', 'month')
-            ->orderByRaw('min(created_at) desc')
-            ->get()
-            ->toArray();
-
-        return view('posts.index', compact('posts', 'archives'));
+        return view('posts.index', compact('posts'));
     }
 
     public function show(Post $post)
