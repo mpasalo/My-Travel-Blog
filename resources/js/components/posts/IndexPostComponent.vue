@@ -1,7 +1,9 @@
 <template>
     <div class="col-md-8 blog-main">
-        <div v-for="post in posts">
-            <post-component :post="post"></post-component>
+        <div v-if="posts.length > 0">
+            <div v-for="post in posts" :key="post.id">
+                <post-component :post="post"></post-component>
+            </div>
         </div>
         <nav class="blog-pagination">
             <a class="btn btn-outline-primary" href="#">Older</a>
