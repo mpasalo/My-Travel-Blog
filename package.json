@@ -1,5 +1,9 @@
 {
     "private": true,
+    "engines": {
+        "node": "10x",
+        "npm": "6x"
+    },
     "scripts": {
         "dev": "npm run development",
         "development": "cross-env NODE_ENV=development node_modules/webpack/bin/webpack.js --progress --hide-modules --config=node_modules/laravel-mix/setup/webpack.config.js",
@@ -29,8 +33,5 @@
         "vue-loader": "^15.9.3",
         "vue-sweetalert2": "^3.0.8",
         "vuex": "^3.5.1"
-    },
-    "engines": {
-        "yarn": "1.x"
     }
 }
