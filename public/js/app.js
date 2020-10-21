@@ -1845,11 +1845,21 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
+//
+//
 
 /* harmony default export */ __webpack_exports__["default"] = ({
-  props: ['posts'],
+  props: ["posts"],
   components: {
-    'post-component': _PostComponent_vue__WEBPACK_IMPORTED_MODULE_0__["default"]
+    "post-component": _PostComponent_vue__WEBPACK_IMPORTED_MODULE_0__["default"]
+  },
+  methods: {
+    goToCreatePost: function goToCreatePost() {
+      location.assign("/posts/create");
+    }
   }
 });
 
@@ -17570,6 +17580,21 @@ var render = function() {
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
   return _c("div", { staticClass: "col-md-8 blog-main" }, [
+    _c("div", { staticClass: "text-center m-2" }, [
+      _c(
+        "button",
+        {
+          staticClass: "btn btn-primary",
+          on: {
+            click: function($event) {
+              return _vm.goToCreatePost()
+            }
+          }
+        },
+        [_vm._v("\n            Create A Post\n        ")]
+      )
+    ]),
+    _vm._v(" "),
     _vm.posts.length > 0
       ? _c(
           "div",
