@@ -1788,39 +1788,33 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
+//
+//
 
 
 window.objectToFormData = object_to_formdata__WEBPACK_IMPORTED_MODULE_1___default.a;
 /* harmony default export */ __webpack_exports__["default"] = ({
-  name: 'CreatePostComponent',
+  name: "CreatePostComponent",
   data: function data() {
     return {
       form: new vform__WEBPACK_IMPORTED_MODULE_0___default.a({
-        title: '',
-        body: ''
+        title: "",
+        body: ""
       })
     };
   },
   methods: {
     saveBlogPost: function saveBlogPost() {
-      var _this = this;
-
       var formData = new FormData();
-      formData.append('title', this.form.title);
-      formData.append('body', this.form.body);
+      formData.append("title", this.form.title);
+      formData.append("body", this.form.body);
       var data = {
         formData: formData
       };
-      this.$store.dispatch('post/create', data).then(function (response) {
-        _this.$swal({
-          title: 'Blog Post',
-          html: 'Post Created Succesfully',
-          type: 'success',
-          confirmButtonText: "Ok"
-        }).then(function (response) {
-          location.assign('/posts');
-        });
-      });
+      this.$store.dispatch("post/create", data);
     }
   }
 });
@@ -17547,7 +17541,7 @@ var render = function() {
               }
             }
           },
-          [_vm._v("Publish Post")]
+          [_vm._v("\n                Publish Post\n            ")]
         )
       ])
     ])
@@ -56918,7 +56912,33 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "actions", function() { return actions; });
 var actions = {
   create: function create(context, data) {
-    axios.post('/posts', data.formData);
+    axios.post("/posts", data.formData).then(function (response) {
+      if (response.data.message) {
+        var arr = [].concat.apply([], [response.data.message.title, response.data.message.body]);
+        var error_fields = arr.filter(function (e) {
+          if (e) {
+            return e;
+          } else {
+            return null;
+          }
+        });
+        Vue.swal({
+          title: "Blog Post",
+          html: error_fields,
+          icon: "error",
+          confirmButtonText: "Ok"
+        });
+      } else {
+        Vue.swal({
+          title: "Blog Post",
+          html: "Post Created Succesfully",
+          type: "success",
+          confirmButtonText: "Ok"
+        }).then(function (response) {
+          location.assign("/posts");
+        });
+      }
+    });
   }
 };
 
