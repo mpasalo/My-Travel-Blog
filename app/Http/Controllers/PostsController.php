@@ -50,4 +50,9 @@ class PostsController extends Controller
             new Post(request(['title', 'body']))
         );
     }
+
+    public function destroy(Post $post)
+    {
+        $post->delete();
+    }
 }
