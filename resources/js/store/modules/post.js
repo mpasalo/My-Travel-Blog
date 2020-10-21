@@ -23,7 +23,7 @@ export const actions = {
                 Vue.swal({
                     title: "Blog Post",
                     html: "Post Created Succesfully",
-                    type: "success",
+                    icon: "success",
                     confirmButtonText: "Ok"
                 }).then(response => {
                     location.assign("/posts");
