@@ -30,5 +30,18 @@ export const actions = {
                 });
             }
         });
+    },
+
+    delete(context, postId) {
+        axios.delete(`/posts/${postId}`).then(response => {
+            Vue.swal({
+                title: "Blog Post",
+                html: "Post Deleted Succesfully",
+                icon: "success",
+                confirmButtonText: "Ok"
+            }).then(response => {
+                location.assign("/posts");
+            });
+        });
     }
 };
