@@ -29,5 +29,8 @@
         "vue-loader": "^15.9.3",
         "vue-sweetalert2": "^3.0.8",
         "vuex": "^3.5.1"
+    },
+    "engines": {
+        "yarn": "1.x"
     }
 }
