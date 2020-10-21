@@ -12,6 +12,8 @@ Route::get('/posts/{post}', 'PostsController@show');
 
 Route::post('/posts', 'PostsController@store');
 
+Route::delete('/posts/{post}', 'PostsController@destroy');
+
 Route::post('/posts/{post}/comments', 'CommentsController@store');
 
 Route::get('logout', '\App\Http\Controllers\Auth\LoginController@logout');
