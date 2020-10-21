@@ -35,11 +35,17 @@ class PostsController extends Controller
 
     public function store()
     {
-        $this->validate(request(), [
-            'title' => 'required',
-            'body' => 'required'
-        ]);
-
+        try {
+            $this->validate(request(), [
+                'title' => 'required',
+                'body' => 'required'
+            ]);
+        } catch (\Illuminate\Validation\ValidationException $e) {
+            return response()->json([
+                'message' => $e->errors()
+            ]);
+        }
+        
         auth()->user()->publish(
             new Post(request(['title', 'body']))
         );
