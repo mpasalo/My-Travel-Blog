@@ -16,30 +16,16 @@ class PostsController extends Controller
 
     public function index()
     {
-        $posts = Post::latest();
-
-        if ($month = request('month')) {
-            $posts->whereMonth('created_at', Carbon::parse($month)->month);
-        }
-
-        if ($year = request('year')) {
-            $posts->whereYear('created_at', $year);
-        }
-
-        $posts = $posts->with(['user'])->get();
+        $posts = Post::latest()->with(['user'])->get();
+        
         return view('posts.index', compact('posts'));
     }
 
     public function show(Post $post)
     {
         $post = $post->load('user', 'comments');
-        $archives = Post::selectRaw('year(created_at) year, monthname(created_at) month, count(*) published')
-            ->groupBy('year', 'month')
-            ->orderByRaw('min(created_at) desc')
-            ->get()
-            ->toArray();
-
-        return view('posts.show', compact('post', 'archives'));
+  
+        return view('posts.show', compact('post'));
     }
 
     public function create()
@@ -57,9 +43,5 @@ class PostsController extends Controller
         auth()->user()->publish(
             new Post(request(['title', 'body']))
         );
-
-        flash('You post has been successfully added.');
-
-        return redirect('/posts');
     }
 }
