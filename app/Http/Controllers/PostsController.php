@@ -33,7 +33,31 @@ class PostsController extends Controller
         return view('posts.create');
     }
 
-    public function store()
+    public function edit(Post $post)
+    {
+        return view('posts.edit', compact('post'));
+    }
+
+    public function update(Post $post, Request $request)
+    {
+        try {
+            $this->validate(request(), [
+                'title' => 'required',
+                'body' => 'required'
+            ]);
+        } catch (\Illuminate\Validation\ValidationException $e) {
+            return response()->json([
+                'message' => $e->errors()
+            ]);
+        }
+        
+        $post->update([
+            'title' => $request['title'],
+            'body'  => $request['body']
+        ]);
+    }
+
+    public function store(Request $request)
     {
         try {
             $this->validate(request(), [
