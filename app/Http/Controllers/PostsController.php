@@ -70,9 +70,11 @@ class PostsController extends Controller
             ]);
         }
         
-        auth()->user()->publish(
-            new Post(request(['title', 'body']))
-        );
+        Post::create([
+            'user_id' => auth()->user()->id,
+            'title'   => $request['title'],
+            'body'    => $request['body']
+        ]);
     }
 
     public function destroy(Post $post)
