@@ -6,10 +6,14 @@
                     {{ post.title }}
                 </a>
             </h2>
-
+            <ion-icon
+                name="create-outline"
+                class="btn btn-secondary btn-sm m-2"
+                @click="editPost()"
+            ></ion-icon>
             <ion-icon
                 name="trash-outline"
-                class="btn btn-danger btn-sm m-4"
+                class="btn btn-danger btn-sm m-2"
                 @click="deletePost()"
             ></ion-icon>
         </div>
@@ -30,6 +34,10 @@ export default {
     methods: {
         deletePost: function() {
             this.$store.dispatch("post/delete", this.post.id);
+        },
+
+        editPost: function() {
+            location.assign(`/posts/${this.post.id}/edit`);
         }
     }
 };
