@@ -45,6 +45,10 @@ Vue.component(
     "show-post-component",
     require("./components/posts/ShowPostComponent.vue").default
 );
+Vue.component(
+    "edit-post-component",
+    require("./components/posts/EditPostComponent.vue").default
+);
 
 /**
  * Next, we will create a fresh Vue application instance and attach it to
