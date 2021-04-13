@@ -2,7 +2,7 @@
 <html lang="en">
 
     <head>
-        <title>My Travel Blog</title>
+        <title>Travel Blog</title>
 
         @include('header.header-meta')
 

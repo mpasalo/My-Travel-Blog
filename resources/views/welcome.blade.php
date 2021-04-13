@@ -4,7 +4,7 @@
 
    <div class="video-content">
        <div class="inner">
-         <h1 class="welcomeheader">My <em>Travel Blog</em></h1>
+         <h1 class="welcomeheader"><em>Travel Blog</em></h1>
             @if (Route::has('login'))
                 <div class="top-right links">
                     @auth
