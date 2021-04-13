@@ -2,6 +2,6 @@
 
 @section('content')
 
-    <index-post-component :posts="{{ $posts }}"></index-post-component>
+    <index-post-component :posts="{{ $posts }}" :user="{{ Auth::user() }}"></index-post-component>
 
 @endsection

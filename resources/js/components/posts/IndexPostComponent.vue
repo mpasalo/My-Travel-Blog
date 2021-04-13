@@ -7,7 +7,7 @@
         </div>
         <div v-if="posts.length > 0">
             <div v-for="post in posts" :key="post.id">
-                <post-component :post="post"></post-component>
+                <post-component :post="post" :user="user"></post-component>
             </div>
         </div>
         <nav class="blog-pagination">
@@ -21,7 +21,7 @@
 import PostComponent from "./PostComponent.vue";
 
 export default {
-    props: ["posts"],
+    props: ["posts", "user"],
 
     components: {
         "post-component": PostComponent
